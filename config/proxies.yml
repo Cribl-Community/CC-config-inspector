@@ -1,0 +1,1 @@
+# No external domains needed — all requests go through CRIBL_API_URL
