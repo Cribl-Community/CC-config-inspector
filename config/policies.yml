@@ -1,0 +1,36 @@
+# Product API access for the Configuration Inspector (btool-style browser).
+# Admins see these declarations at install time.
+
+policies:
+  - object: '/master/groups'
+    actions: ['GET']
+  - object: '/system/info'
+    actions: ['GET']
+  - object: '/pipelines'
+    actions: ['GET']
+  - object: '/routes'
+    actions: ['GET']
+  - object: '/inputs'
+    actions: ['GET']
+  - object: '/outputs'
+    actions: ['GET']
+  - object: '/functions'
+    actions: ['GET']
+  - object: '/lookups'
+    actions: ['GET']
+  - object: '/parsers'
+    actions: ['GET']
+  - object: '/m/:gid/pipelines'
+    actions: ['GET']
+  - object: '/m/:gid/routes'
+    actions: ['GET']
+  - object: '/m/:gid/inputs'
+    actions: ['GET']
+  - object: '/m/:gid/outputs'
+    actions: ['GET']
+  - object: '/m/:gid/functions'
+    actions: ['GET']
+  - object: '/m/:gid/lookups'
+    actions: ['GET']
+  - object: '/m/:gid/parsers'
+    actions: ['GET']

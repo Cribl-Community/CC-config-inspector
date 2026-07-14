@@ -6,7 +6,13 @@ A Cribl App Platform application that mimics Splunk's `btool` utility for Cribl 
 
 ## Cribl App Platform Context
 
-# Cribl App Platform Developer Guide
+## Versioning
+
+`npm run package` increments your app version before creating the archive. By default, it increments the patch version, for example `1.0.0` to `1.0.1`.
+
+- `npm run package -- --minor` — bump minor version
+- `npm run package -- --major` — bump major version
+- `npm run package -- --version X.Y.Z` — set an exact version
 
 ## Global Variables
 
@@ -16,6 +22,8 @@ The following are set on `window` automatically when your app runs inside Cribl.
 |---|---|---|
 | `CRIBL_API_URL` | `https://localhost:9000/api/v1` | Base URL for all Cribl API calls |
 | `CRIBL_BASE_PATH` | `/app-ui/my-app` | The base path your app is mounted at |
+
+Type declarations live in `src/vite-env.d.ts`. Use `CRIBL_API_URL` as a global in API modules.
 
 ## How API Calls Work (Fetch Proxy)
 
@@ -51,6 +59,10 @@ Cribl REST API endpoints that don't begin with `/system/` are contextual and can
 
 Endpoints beginning with `/search/` should ALWAYS use `groupId` set to `default_search`.
 
+### Platform policies
+
+This app declares required Cribl API access in `config/policies.yml` (groups, system info, and Stream config resources at leader and group scope). Admins review these at install time. No external domains are declared — all requests go through `CRIBL_API_URL` (`config/proxies.yml` is empty).
+
 ## Architecture & Key Files
 
 | File | Purpose |
@@ -64,7 +76,9 @@ Endpoints beginning with `/search/` should ALWAYS use `groupId` set to `default_
 | `src/components/Sidebar.tsx` | Category navigation with counts |
 | `src/components/ConfigViewer.tsx` | Main config display — flat/tree/JSON views, detail panel, per-view export trigger |
 | `src/components/ExportModal.tsx` | Export dialog — format (JSON/CSV/TXT), scope (current view / all categories), category checkboxes, download |
+| `src/vite-env.d.ts` | Global Cribl platform types (`CRIBL_API_URL`, `CRIBL_BASE_PATH`, `getCriblUser`) |
 | `config/proxies.yml` | No external domains needed |
+| `config/policies.yml` | Declared Cribl API access for groups, system info, and Stream config resources |
 
 ## Design System
 

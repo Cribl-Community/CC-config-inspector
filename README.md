@@ -14,10 +14,26 @@ The app loads configuration from your connected Cribl Stream instance and presen
 
 ## Installation
 
-1. Log in to Cribl and then click on **Apps->View All**
-2. Click **Add App->Import from Git**.
-3. Paste the repo url and "latest" for the release tag.
-4. Click **Import**.
+### From a release package (recommended)
+
+1. Download the latest `cc-config-inspector-*.tgz` from [GitHub Releases](https://github.com/Cribl-Community/CC-config-inspector/releases).
+2. In Cribl, go to **Apps → View All → Add App → Upload**.
+3. Select the downloaded archive and click **Import**.
+
+### From Git
+
+1. Log in to Cribl and go to **Apps → View All → Add App → Import from Git**.
+2. Paste the repository URL and select a release tag (for example `v1.0.0`).
+3. Click **Import**.
+
+### Local development
+
+```bash
+npm install
+npm run dev
+```
+
+The dev server supports live reload when you edit `config/policies.yml`, `config/proxies.yml`, or `package.json`. Use `npm run package` to build a distributable `.tgz` archive.
 
 ### Config categories
 

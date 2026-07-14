@@ -1,7 +1,5 @@
 import type { ConfigCategory, ConfigEntry, Group } from './types'
 
-declare const CRIBL_API_URL: string
-
 const BASE = CRIBL_API_URL
 
 // ─── Groups ───────────────────────────────────────────────────────────────────
